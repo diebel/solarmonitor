@@ -1,0 +1,22 @@
+<h1>New Reading</h1>
+
+<%= render 'form', reading: @reading %>
+
+<%= link_to 'Back', readings_path %>
+
+<script type="text/javascript">
+	var data;
+		
+	async function loadData() {
+		// load data from URL: http://www.sunpowerconsole.com/cgi-bin/dl_cgi?Command=DeviceList
+		
+		let response = await fetch('http://172.27.153.1/cgi-bin/dl_cgi?Command=DeviceList');
+		data = await response.json();
+	
+		// fill input field
+		document.getElementById('reading_data').innerHTML=JSON.stringify(data);
+	}
+	
+	//loadData();
+	
+</script>
